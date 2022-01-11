@@ -1,0 +1,29 @@
+
+body{
+    background-color:black;
+}
+#principal{
+    padding:10px 10px 10px 50px;
+    background-color:lightblue;	
+    box-shadow: 10px 10px 5px 0px white;
+    border-radius: 10px;
+}
+td{
+    padding-bottom:25px;
+}
+h1{
+    text-align:center;
+}
+#tarjeta, #fecha_tarjeta, #email, #n_tarjeta, #f_tarjeta, #e_mail{
+    visibility:hidden;
+}
+label{
+    font-family: 'Verdana';
+}
+label.error{
+    color:red;
+    font-size: 8px;
+}
+input.error{
+    border: 2px dotted red;
+}
