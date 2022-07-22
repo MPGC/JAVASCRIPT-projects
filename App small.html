@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta  charset="utf-8" />
+<title>ExamenResuelto2</title>
+<style>
+    #capaMenu{
+        display: block;
+    }
+    #capaCambio,#capaAlta,#capaBaja,#capaConsulta,#capaMensaje{
+		display:none;
+    }
+    .max-auto{
+        padding: 30px;
+        margin: auto;
+        margin-top: 100px;
+        border-radius: 4px;
+        width:700px;
+        box-shadow: 7px 13px 37px #000;
+        background:#4F78E0;
+    }
+
+    .text-center{
+        color:#223461;
+    }
+
+    input[type=button]{
+        background:#3F4961;
+        border-color:#3F4961;
+        transition: all 1s ease;
+        
+    }
+    input[type=button]:hover {
+        background:#96B2FA;
+        color: #fff !important;
+    }
+
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--Codigo html de la pagina-->
+    <!--Pate del menu-->
+    <div id="capaMenu">
+        <!--Diseño para darle el mismo estilo a las capas más adelante-->
+        <div class="max-auto text-center">
+            <!--Mensaje personalizado de localstorage-->
+            <label>BIENVENID@</label>
+            <input type="text" id="id2" name="nombre_recibido" value=" " readonly/>
+            <h3 class="text-center"><b>Eliga que desea hacer</b></h3>
+            <br>
+            <!--Botón para ir a la capa de altas-->
+            <input class="btn btn-primary" id='bt1' type="button" value="Cambio de aspecto" onclick="verCambio()"/>
+            <!--Botón para ir a la capa de bajas-->
+            <input class="btn btn-primary" id='bt2' type="button" value="Altas" onclick="verAlta()"/>
+            <!--Botón para ir a la capa de modificaciones-->
+            <input class="btn btn-primary" id='bt3' type="button" value="Bajas" onclick="verBaja()"/>
+            <!--Botón para ir a la capa de consulta-->
+            <input class="btn btn-primary" id='bt4' type="button" value="Consultas" onclick="verConsulta()"/>
+        </div>
+    </div>
+    <!--Codigo de la capa de cambio-->
+    <div id="capaCambio">
+        <div class="max-auto text-center" id="invertir">
+            <h3 class="text-center" id="invertir"><b>Texto</b></h3>
+            <br>
+            <p id="invertir">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <!--Boton para invertir colores-->
+            <input class="btn btn-primary" id='bt5' type="button" value="Invertir colores" onclick="invertirColor()">
+            <!--Boton para poner los colores-->
+            <input class="btn btn-primary" id='bt6' type="button" value="Color" onclick="verColores()">
+            <!--Boton para volver al menu-->
+            <input class="btn btn-primary"  id="bt6" type="button" value="Volver al menu" onclick="verMenu()"/>
+        </div>
+    </div>
+    <!--Codigo de la capa de altas-->
+    <div id="capaAlta">
+        <div class="max-auto">
+            <form>
+                <h4 class="text-center"><b>REALICE UN ALTA</b></h4>
+                <br>
+                <!--Campo para el isbn-->
+                <input class="form-control" type="text" id="isbn" name="isbn" placeholder="Ingrese un isbn"/>
+                <br>
+                <!--Campo para el titulo-->
+                <input class="form-control"  type="text" id="titulo" name="titulo" placeholder="Ingrese el titulo del libro"/>
+                <br>
+                <!--Campo para el autor-->
+                <input class="form-control"  type="text" id="autor" name="autor" placeholder="Ingrese el autor"/>
+                <br>
+                <!--Campo para la editorial-->
+                <input  class="form-control" type="text" id="editorial" name="editorial" placeholder="Ingrese la editorial"/>
+                <br>
+                <div class="d-grid gap-2">
+                    <!--Botón para enviar la información-->
+                    <input class="btn btn-primary" id="bt7" type="button" value="Alta" onclick="recogerDatos()"/>
+                    <!--Boton de reset para borrar todos los datos-->
+                    <input class="btn tbn-primary" id="bt8" type="reset" value="Reset"/>
+                    <!--Cuando cliquemos nos mandará de vuelta al menú-->
+                    <input class="btn btn-primary"  id="bt8" type="button" value="Volver al menu" onclick="verMenu()"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="capaBaja">
+        <!--Capa para el diseño-->
+        <div class="max-auto">
+            <form>                
+                <h4 class="text-center"><b>REALICE UNA BAJA</b></h4>
+                <br>
+                <!--Campo para el id-->
+                <input class="form-control" type="text" id="isbnBaja" name="isbn" placeholder="Ingrese un isbn"/>
+                <br>
+                <!--Botón para dar de baja-->
+                <div class="d-grid gap-2">
+                    <input class="btn btn-primary" id="bt7" type="button" value="Dar de baja" onclick="darBaja()"/>
+                    <!--Cuando cliquemos nos mandará de vuelta al menú-->
+                    <input class="btn btn-primary" id="bt8" type="button" value="Volver al menu" onclick="verMenu()"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="capaConsulta">
+        <!--Capa diseño-->
+        <div class="max-auto">
+            <h4 class="text-center"><b>REALICE UNA CONSULTA</b></h4>
+            <br>
+            <!--Campo para el id-->
+            <input class="form-control" type="text" id="isbnConsulta" name="isbnConsulta" placeholder="Ingrese un isbn"/>
+            <br>
+            <div class="form-floating">
+                <textarea class="form-control" id="textConsultas" readonly></textarea>
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <!--Botón para hacer una consulta-->
+                <input class="btn btn-primary" id="bt11" type="button" value="Hacer consulta" onclick="hacerConsulta()"/>
+                <!--Cuando cliquemos nos mandará de vuelta al menú-->
+                <div id="texto"></div>
+                <input class="btn btn-primary" id="bt12" type="button" value="Volver al menu" onclick="verMenu()"/>
+            </div>
+        </div>
+    </div>
+    <div id="capaMensaje">
+        <div class="max-auto">
+            <img src="" id="imagen">
+            <h1 id="mensaje"></h1>
+            <input class="btn btn-primary" id="bt13" type="button" value="Volver" onclick="volver()"/>
+        </div>
+    </div>
+    <!--######################### SCRIPT DE LA PAGINA #############################-->
+    <script>
+        //LocalStorage nombre
+        document.getElementById("id2").value= localStorage.getItem('nombre');   //Recogemos el nombre y lo ponemos en el campo llamado id2
+        //Variable para identificar cada capa
+        let capa;
+        //Script para navegación entre capas
+        //Funcion para visualizar la capa menu
+        function verMenu(){
+            document.getElementById('capaCambio').style.display='none'; //Cambio oculto
+            document.getElementById('capaAlta').style.display='none';   //Altas oculta
+            document.getElementById('capaBaja').style.display='none';   //Bajas oculta
+            document.getElementById('capaConsulta').style.display='none';   //Consultas oculta
+            document.getElementById('capaMenu').style.display='block';  //Mostramos menu
+            capa=0;
+        }
+        //Funcion para visualizar la capa de cambio
+        function verCambio(){
+            document.getElementById('capaMenu').style.display='none';   //Menu oculto
+            document.getElementById('capaAlta').style.display='none';   //Altas oculta
+            document.getElementById('capaBaja').style.display='none';   //Bajas oculta
+            document.getElementById('capaConsulta').style.display='none';   //Consultas oculta
+            document.getElementById('capaCambio').style.display='block';    //Mostramos cambio
+        }
+        //Funcion para visualizar la capa de altas
+        function verAlta(){
+        	document.getElementById('capaMenu').style.display='none';   //Menu oculto
+            document.getElementById('capaCambio').style.display='none'; //Cambio oculto
+            document.getElementById('capaBaja').style.display='none';   //Bajas oculta
+            document.getElementById('capaConsulta').style.display='none';   //Consultas oculta
+            document.getElementById('capaAlta').style.display='block';  //Mostramos altas
+            document.getElementById('isbn').value="";   //Vaciamos el campo de isbn
+            document.getElementById('titulo').value=""; //Vaciamos el campo de titulo
+            document.getElementById('autor').value="";  //Vaciamos el campo de autor
+            document.getElementById('editorial').value="";  //Vaciamos el campo de editorial
+            capa=1;
+        }
+        //Funcion para visualizar la capa de bajas
+        function verBaja(){
+            document.getElementById('capaMenu').style.display='none';   //Menu oculto
+            document.getElementById('capaCambio').style.display='none'; //Cambio oculto
+            document.getElementById('capaAlta').style.display='none';   //Altas ocultas
+            document.getElementById('capaConsulta').style.display='none';   //Consultas ocultas
+            document.getElementById('capaBaja').style.display='block';  //Mostramos bajas
+            document.getElementById('isbnBaja').value="";   //Vaciamos el campo
+            capa=2;
+        }
+        //Funcion para visualizar la capa de consultas
+        function verConsulta(){
+            document.getElementById('capaMenu').style.display='none';   //Menu oculto
+            document.getElementById('capaCambio').style.display='none'; //Cambio oculto
+            document.getElementById('capaAlta').style.display='none';   //Altas ocultas
+            document.getElementById('capaBaja').style.display='none';   //Bajas ocultas
+            document.getElementById('capaConsulta').style.display='block';  //Mostramos consultas
+            document.getElementById('isbnConsulta').value="";   //Vaciamos el campo
+            document.getElementById('textConsultas').value="";  //Vaciamos el textarea
+            capa=3;
+        }
+        //Funcion para visualizar la capa de mensaje
+        function verMensaje(texto,color){
+            document.getElementById('capaMenu').style.display='none';   //Menu oculto
+            document.getElementById('capaCambio').style.display='none'; //Cambio oculto
+            document.getElementById('capaAlta').style.display='none';   //Altas ocultas
+            document.getElementById('capaBaja').style.display='none';   //Bajas ocultas
+            document.getElementById('capaConsulta').style.display='none';  //Consultas ocultas
+            document.getElementById('capaMensaje').style.display="block";   //Mostramos mensajes
+            document.getElementById('mensaje').innerText=texto; //Metemos el texto en el h1
+            document.getElementById('mensaje').style.color=color;   //Cambiamos el color
+        }
+        //Funcion para volver a la ventana correpondiente despues del mensaje
+        function volver(){
+            switch(capa){
+                case 0:
+                    document.getElementById('capaMenu').style.display='block';   //Mostramos menú
+                    document.getElementById('capaMensaje').style.display="none";   //Mensaje oculto
+                    break; 
+                case 1:
+                    document.getElementById('capaAlta').style.display='block';   //Mostramos altas
+                    document.getElementById('capaMensaje').style.display="none";   //Mensaje oculto
+                    break;
+                case 2:
+                    document.getElementById('capaBaja').style.display='block';   //Mostramos bajas
+                    document.getElementById('capaMensaje').style.display="none";   //Mensaje oculto
+                    document.getElementById('isbnBaja').value="";   //Vaciamos el campo de isbn
+                    break;
+                case 3:
+                    document.getElementById('capaConsulta').style.display='block';   //Mostramos consultas
+                    document.getElementById('capaMensaje').style.display="none";   //Mensaje oculto
+                    document.getElementById('isbnConsulta').value="";   //Vaciamos el campo de isbn
+                    break;
+            }
+        }
+        //####################### CODIGO CAPA INVERTIR COLORES ############################
+
+        //Codigo para invertir el color en capa cambio
+        function invertirColor(){
+		    document.getElementById('invertir').style.filter="invert(100%)";    //Invertimos el color de la página
+		}
+        //Codigo para dejar a color en capa cambio
+        function verColores(){
+            document.getElementById('invertir').style.filter="invert(0%)";      //Devolvemos a la forma original la página
+        }
+
+
+        //####################### CODIGO CAPA ALTAS ############################
+
+        //Creamos el array de libros
+        let libros= new Array();
+        //Codigo para validar los strings(autor,editorial...)
+        function validarString(string){
+            if(string.length==0){
+                return false;
+            }
+            return true;
+            }
+
+        //Codigo para validar el isbn
+        function validarIsbn(isbn){
+            let patron_isbn= /^([A-Z]{4})+([0-9]{3})+([A-Z]{2})*$/; //Patrón de validación de isbn
+            test_isbn=patron_isbn.test(isbn);   //El test para validar el isbn
+            //Si el test del isbn es correcto booleano
+            if(test_isbn){
+                return true;    //Es correcto
+            }else{
+                return false;   //No es correcto
+            }
+        }
+        //Codigo para recoger los datos del alta
+        function recogerDatos(){
+            let encontrado=false;   //Creamos la variable encontrado para ver si existe el isbn
+            let isbn=document.getElementById('isbn').value.toUpperCase();  //Definimos que el isbn es el mismo que el del campo
+		    let titulo=document.getElementById('titulo').value; //Definimos que el titulo es el mismo que el del campo
+			let autor=document.getElementById('autor').value; //Definimos que el eutor es el mismo que el del campo
+			let editorial=document.getElementById('editorial').value;   //Definimos que el editorial es el mismo que el del campo
+            //Bucle para ver si el isbn ha sido introducido anteriormente
+            for (i=0;i<libros.length;i++) {   //Recorremos el array
+                if(isbn==libros[i].isbn){ //Si el isbn está dentro del array
+                    encontrado=true;   //Si lo encuentra true
+                    i=libros.length;
+                    verMensaje("El isbn introducido ya está dado de alta","red");  
+                    document.getElementById('isbn').value="";   //Vaciamos el campo del isbn
+                    document.getElementById('isbn').focus();    //Y le ponemos el focus para que se den cuenta de que es el campo que hay que rellenar
+                    return; //Para que no siga
+                }
+            } 
+            //Comprobaciones de que todo esté bien CON ENCAPSULAMIENTO 
+            if(!validarIsbn(isbn)){ //Si no se cumple la validación
+                verMensaje("Introduzca el isbn correctamente","red");
+                document.getElementById('isbn').value="";   //Vaciamos el campo del isbn
+                document.getElementById('isbn').focus();    //Y le ponemos el focus para que se den cuenta de que es el campo que hay que rellenar
+                if (encontrado) {   //Si ya existe
+                    verMensaje("Isbn ya registrado, introduzca uno nuevo","red");
+                    document.getElementById('isbn').value="";   //Vaciamos el campo de isbn
+                    document.getElementById('isbn').focus();    //Le ponemos el focus en el cqampo a rellenar
+                }
+                return; //Para que no siga 
+            }
+            if(!validarString(titulo)){ //Si no se cumple la validación
+				verMensaje("Rellene el titulo","red");
+                document.getElementById('titulo').value=""; //Vaciamos el campo del titulo
+                document.getElementById('titulo').focus();  //Le ponemos el focus porque es el campo que hay que rellenar
+                return; //Para que no siga 
+            }
+            if(!validarString(editorial)){ //Si no se cumple la validación
+				verMensaje("Rellene el editorial","red");
+                document.getElementById('editorial').value=""; //Vaciamos el campo de la editorial
+                document.getElementById('editorial').focus();   //Le ponemos el focus porque es el campo a rellenar
+                return; //Para que no siga
+            }
+            if(!validarString(autor)){  //Si no se cumple la validación
+				verMensaje("Rellene el autor","red");
+                document.getElementById('autor').value="";  //Vaciamos el campo del autor
+                document.getElementById('autor').focus();   //Le ponemos el focus porque es el campo a rellenar
+                return; //Para que no siga
+            }
+            //Creamos el objeto de libros
+            libro=new Object;
+            //Metemos los datos de los objetos en él
+            libro.isbn=isbn;
+            libro.titulo=titulo;
+            libro.autor=autor;
+            libro.editorial=editorial;
+            libros.push(libro);
+            document.getElementById('isbn').value="";   //Vaciamos el campo de isbn
+            document.getElementById('titulo').value=""; //Vaciamos el campo de titulo
+            document.getElementById('autor').value="";  //Vaciamos el campo de autor
+            document.getElementById('editorial').value="";  //Vaciamos el campo de editorial
+            verMensaje("Dado de alta correctamente","green");
+            capa=0; //Para que vuelva al menú después del alta
+        }
+
+        //####################### CODIGO CAPA BAJAS ############################
+        function darBaja(){
+            let isbn=document.getElementById('isbnBaja').value;    //Recogemos el isbn
+			if(!validarIsbn(isbn)){ //Comprobamos si es válido
+				verMensaje('Isbn introducido no válido','red');    //Mensaje en caso de que no sea válido
+				document.getElementById('isbnBaja').value="";   //Vaciamos el campo
+				document.getElementById('isbnBaja').focus();    //Le ponemos el focus al campo a rellenar
+			}else{
+				let encontrado=false;  //Creamos la variable encontrado
+				for (i=0;i<libros.length;i++){    //Recorremos el array para buscarloo
+					if(isbn==libros[i].isbn){  //Vemos si es el mismo isbn que el del array
+                        let confirmar=confirm("¿Esta seguro de dar de baja este libro? \n"+"Titulo: "+libros[i].titulo+"\n"+"Autor: "+libros[i].autor+"\n"+"Editorial :"+libros[i].editorial,"black");	//Confirmamos el borrado
+                        encontrado=true;    //El isbn es el mismo
+						if(confirmar){  //Si se confirma
+							libros.splice(i,1); //Borramos el libro del array						
+							verMensaje("Libro dado de baja correctamente","green");  //Mensaje de alerta de borrado
+						}else{  //En caso de que no
+							verMensaje("Operación cancelada","black"); //Mensaje de cancelación
+							document.getElementById('isbnBaja').value="";   //Vaciamos el campo isbn
+						}
+                        i=libros.length;    //Fin de for
+					}
+				}
+				if(!encontrado){    //En caso de que no sea el mismo
+					verMensaje("El isbn introducido no está en nuestra base de datos","red");   //Mensaje de alerta
+					document.getElementById('isbnBaja').value="";   //Vaciamos el campo
+					document.getElementById('isbnBaja').focus();    //Le ponemos el foco al campo a rellenar
+				}
+			}
+		}
+
+
+        //####################### CODIGO CAPA CONSULTAS ############################
+        function hacerConsulta(){
+            let isbn=document.getElementById('isbnConsulta').value;    //Recogemos el isbn
+            let texto=document.getElementById('textConsultas'); //Definimos el campo de texto
+			if(!validarIsbn(isbn)){ //Comprobamos si es válido
+				verMensaje('Isbn introducido no válido','red');    //Mensaje en caso de que no sea válido
+				document.getElementById('isbnConsulta').value="";   //Vaciamos el campo
+				document.getElementById('isbnConsulta').focus();    //Le ponemos el focus al campo a rellenar
+			}else{
+				let encontrado=false;  //Creamos la variable encontrado
+				for (i=0;i<libros.length;i++){    //Recorremos el array para buscarloo
+					if(isbn==libros[i].isbn){  //Vemos si es el mismo isbn que el del array
+                        texto.value="Titulo: "+libros[i].titulo+"\n Autor: "+libros[i].autor+"\n Editorial :"+libros[i].editorial;
+                        encontrado=true;    //El isbn es el mismo
+                        verMensaje("Consulta realizada: \n Titulo: "+libros[i].titulo+"\n Autor: "+libros[i].autor+"\n Editorial :"+libros[i].editorial,"green");
+                        i=libros.length;    //Fin de for
+					}
+				}
+				if(!encontrado){    //En caso de que no sea el mismo
+					verMensaje("El isbn introducido no está en nuestra base de datos","red");   //Mensaje de alerta
+					document.getElementById('isbnConsulta').value="";   //Vaciamos el campo
+					document.getElementById('isbnConsulta').focus();    //Le ponemos el foco al campo a rellenar
+				}
+			}
+		}
+    </script>
+</body>
+</html>
